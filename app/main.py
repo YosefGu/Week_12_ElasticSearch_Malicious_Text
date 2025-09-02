@@ -36,7 +36,7 @@ class Main():
             return str(e)
 
     def start_server(self):
-        uvicorn.run(server, host=os.getenv("HOST"), port=int(os.getenv("PORT", 8000)))
+        uvicorn.run(server, host=os.getenv("HOST"))
 
 if __name__ == "__main__":
     Main().run()

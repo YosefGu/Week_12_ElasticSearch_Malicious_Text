@@ -1,12 +1,15 @@
 
-docker build -t elasticsearch:1.2 .
-docker tag elasticsearch:1.2 yosigu/elasticsearch:1.2
-docker push yosigu/elasticsearch:1.2 
+docker build -t app-elastic:1.5 .
+docker tag app-elastic:1.5 yosigu/app-elastic:1.5
+docker push yosigu/app-elastic:1.5
 
-docker run -d --name elasticsearch-container `
- -p 8000:8000 `
- -e ES_PATH=http://localhost:9200 `
- -e ES_INDEX=malicious_text `
- -e HOST=127.0.0.1 `
- -e PORT=8000 `
- yosigu/elasticsearch:1.2 
+docker run -d --name app-elastic-container `
+--network elastic-net `
+-p 8000:8000 `
+-e ES_PATH=http://elasticsearch-container:9200 `
+-e ES_INDEX=malicious_text `
+-e HOST=0.0.0.0 `
+yosigu/app-elastic:1.5
+
+
+-e PORT=8000 `
