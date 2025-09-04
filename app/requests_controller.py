@@ -18,13 +18,20 @@ class RequestsController():
     # select docs with tow or more weapons
     def select_docs_with_weapons():
         query = {
-            "query" : {
-               "script": {
-                   "script" : {
-                       "source" : "doc['Weapons'].size() >= 2",
-                       "lang" : "painless"
-                   }
-               }
-            }  
+            "query": {
+                "bool": {
+                    "must": [
+                        { "exists": { "field": "Weapons" } },
+                        {
+                            "script": {
+                                "script": {
+                                    "source": "doc['Weapons'].length >= 2",
+                                    "lang": "painless"
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
         }
         return select_by_query(query)
