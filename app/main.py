@@ -19,13 +19,14 @@ class Main():
             server_thread = threading.Thread(target=self.start_server, daemon=True)
             server_thread.start()
 
-            data = LoadData.read_csv_file()
+            csv_data = LoadData.read_csv_file()
             weapons = LoadData.read_txt_file()
 
             elastic_conn.initialize()
-            elastic_conn.insert_data(data)
+            elastic_conn.insert_data(csv_data)
 
-            analyzer = Analyze(weapons, data)
+            elastic_data = elastic_conn.get_all_data()
+            analyzer = Analyze(weapons, elastic_data)
             analyzer.start()
 
             while True:
