@@ -49,10 +49,6 @@ def insert_data(doc_list):
     helpers.bulk(es, actions)
     es.indices.refresh(index=index_name)
 
-    # for index, doc in enumerate(doc_list):
-    #     es.index(index=index_name, body=doc)
-    #     if index > 100:
-    #         break
 
 def add_new_field(dict_data):
     actions = [
@@ -67,11 +63,6 @@ def add_new_field(dict_data):
     print("Number of successful updates:", success)
     print("Errors:", errors)
     es.indices.refresh(index=index_name)
-    # es.update(
-    #     index=index_name,
-    #     id=doc_id,
-    #     doc=dict_data
-    # )
 
 def add_mapping_field(dict_mapp):
     es.indices.put_mapping(
@@ -89,16 +80,7 @@ def get_all_data():
 
     all_docs = list(results) 
     return all_docs
-    # all_docs = [doc for doc in results]
-    # return all_docs
-    # query = {
-    #     "query": {
-    #         "match_all": {}
-    #     },
-    #     'size': 100
-    # }
-    # results = es.search(index=index_name, body=query)
-    # return results
+
 
 def get_data_by_field(field):
     query = {
@@ -111,9 +93,6 @@ def get_data_by_field(field):
     results = es.search(index=index_name, body=query)
     return results
 
-# def get_data_by_query(inner_query):
-#     query = {inner_query}
-#     return es.search(index=index_name, body=query)
 
 def delete_doc_by_query(query):
     try:

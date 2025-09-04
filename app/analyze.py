@@ -49,14 +49,7 @@ class Analyze():
             data_result[doc['_id']] = {'Weapons' : weapons}
         add_new_field(data_result)
         print("weapons added.")
-        # for hit in self.data['hits']['hits']:
-        #     weapons = self.find_weapons(hit['_source']['text'])
-        #     data_result[hit['_id']] = {'Weapons' : weapons}
-
-        # for key, val in data_result.items():
-        #     add_new_field(key, val)
-        
-        
+  
         
     def add_emotion(self):
         print("start add emotion")
@@ -69,12 +62,6 @@ class Analyze():
             data_result[doc['_id']] = {'Emotion' : emotion}
         add_new_field(data_result)
         print("emotion added.")
-        # for hit in self.data['hits']['hits']:
-        #     emotion = self.find_emotion(hit['_source']['text'])
-        #     data_result[hit['_id']] = {'Emotion' : emotion}
-        
-        # for key, val in data_result.items():
-        #     add_new_field(key, val)
 
 
     # remove non antisemite docs, with no weapons and positive or netural emotion

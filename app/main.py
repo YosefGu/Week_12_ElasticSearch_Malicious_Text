@@ -1,6 +1,3 @@
-from dotenv import load_dotenv
-load_dotenv()
-
 from load_data import LoadData
 from analyze import Analyze
 from server import server
