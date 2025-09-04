@@ -10,10 +10,6 @@ def all_data():
     try:
         data = get_all_data()
         return data
-        # if data['hits']['total']['value'] == 0:
-        #     return {"response" : "Data not found, no data result match the query."}
-        # else:
-        #     return data['hits']['hits']
     except Exception as e:
         print(str(e))
         return {"Error" : str(e)}
@@ -23,10 +19,6 @@ def get_antisemic_tweets():
     try:
         data = RequestsController.select_antisemic_with_weapon_docs()
         return data
-        # if data['hits']['total']['value'] == 0:
-        #     return {"response" : "Data not found, no data result match the query."}
-        # else:
-        #     return data['hits']['hits']
     except Exception as e:
         print(str(e))
         return {"Error" : str(e)}
@@ -36,10 +28,6 @@ def get_antisemic_tweets():
     try:
         data = RequestsController.select_docs_with_weapons()
         return data
-        # if data['hits']['total']['value'] == 0:
-        #     return {"response" : "Data not found, no data result match the query."}
-        # else:
-        #     return data['hits']['hits']
     except Exception as e:
         print(str(e))
         return {"Error" : str(e)}
